@@ -10,6 +10,8 @@ export class AppointmentComponent implements OnInit {
   appointments: any[] = [];
   appointmentDates: any[] = [];
 
+  selectedDate: string = '';
+
   currentCarouselIndex = 0;
 
   constructor(private appointmentService: AppointmentService) { }
@@ -28,8 +30,8 @@ export class AppointmentComponent implements OnInit {
     const next15Days = new Date();
     next15Days.setDate(today.getDate() + 365);
 
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     while (today <= next15Days) {
       const appointmentDate = {
@@ -79,6 +81,15 @@ export class AppointmentComponent implements OnInit {
   }
 
   isDisabled(dayName: string): boolean {
-    return dayName === 'Sun' || dayName === 'Sat';
+    return dayName === 'Sunday' || dayName === 'Saturday';
+  }
+
+  selectDate(date: any) {
+    this.appointmentDates.forEach((d) => {
+      d.isActive = false;
+    });
+
+    date.isActive = true;
+    this.selectedDate = `${date.month} ${date.day}, ${new Date().getFullYear()}`;
   }
 }

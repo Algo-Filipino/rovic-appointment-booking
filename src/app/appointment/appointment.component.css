@@ -149,6 +149,11 @@
     right: 10px;
 }
 
+.date.active {
+    background-color: #191444;
+    color: white;
+}
+
 /********** SELECT TIMESLOT CONTAINER **************/
 
 .select-timeslot .title {
