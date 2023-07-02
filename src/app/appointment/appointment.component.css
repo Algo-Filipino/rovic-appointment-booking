@@ -112,10 +112,10 @@
 }
 
 .date[disabled]:hover {
-    /* Override hover styles for disabled buttons */
-    background-color: inherit;
-    color: inherit;
-    cursor: default;
+  /* Override hover styles for disabled buttons */
+  background-color: inherit;
+  color: inherit;
+  cursor: default;
 }
 
 .date h1 {
