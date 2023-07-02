@@ -67,10 +67,24 @@
 
 /********** DAYS CONTAINER **************/
 
+.carousel-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.carousel {
+    width: 75%;
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
 .days-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex: 0 0 100%;
+    padding: 10px;
 }
 
 .date {
@@ -79,16 +93,29 @@
     border-radius: 8px;
     width: 10rem;
     height: 10rem;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 10px;
     margin-left: 1rem;
 }
 
 .date:hover {
     background-color: #191444;
     color: white;
+}
+
+.date[disabled] {
+    pointer-events: none; /* Disable pointer events on disabled buttons */
+    opacity: 0.5; /* Reduce the opacity of disabled buttons */
+}
+
+.date[disabled]:hover {
+    /* Override hover styles for disabled buttons */
+    background-color: inherit;
+    color: inherit;
+    cursor: default;
 }
 
 .date h1 {
@@ -101,6 +128,25 @@
 
 .date h4 {
     margin: 10px 0;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.nav-button.left {
+    left: 10px;
+}
+  
+.nav-button.right {
+    right: 10px;
 }
 
 /********** SELECT TIMESLOT CONTAINER **************/

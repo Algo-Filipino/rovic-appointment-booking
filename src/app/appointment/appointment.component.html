@@ -18,14 +18,24 @@
       <button class="calendar-button">Open Calendar</button>
     </div>
 
-    <div class="days-container">
+    <div class="carousel-container">
+      <button class="nav-button left" (click)="moveCarousel(-1)">
+        <img src="../../assets/images/arrow-left.svg" alt="left" />
+      </button>
+
       <div class="carousel">
-        <button class="date" *ngFor="let date of appointmentDates">
-          <h3>{{ date.month }}</h3>
-          <h1>{{ date.day }}</h1>
-          <h4>{{ date.dayName }}</h4>
-        </button>
+        <div class="days-container">
+          <button class="date" [disabled]="isDisabled(date.dayName)" *ngFor="let date of appointmentDates">
+            <h3>{{ date.month }}</h3>
+            <h1>{{ date.day }}</h1>
+            <h4>{{ date.dayName }}</h4>
+          </button>
+        </div>
       </div>
+
+      <button class="nav-button right" (click)="moveCarousel(1)">
+        <img src="../../assets/images/arrow-right.svg" alt="right" />
+      </button>
     </div>
 
     <div class="select-timeslot">

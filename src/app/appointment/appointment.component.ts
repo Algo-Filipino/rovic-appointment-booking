@@ -10,6 +10,8 @@ export class AppointmentComponent implements OnInit {
   appointments: any[] = [];
   appointmentDates: any[] = [];
 
+  currentCarouselIndex = 0;
+
   constructor(private appointmentService: AppointmentService) { }
 
   ngOnInit() {
@@ -24,7 +26,7 @@ export class AppointmentComponent implements OnInit {
   populateAppointmentDates() {
     const today = new Date();
     const next15Days = new Date();
-    next15Days.setDate(today.getDate() + 15);
+    next15Days.setDate(today.getDate() + 365);
 
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -50,5 +52,33 @@ export class AppointmentComponent implements OnInit {
 
       today.setDate(today.getDate() + 1);
     }
+  }
+
+  moveCarousel(direction: number) {
+    const carousel = document.querySelector('.carousel') as HTMLElement | null;
+    if (!carousel) {
+      return;
+    }
+  
+    const carouselWidth = carousel.offsetWidth;
+    const maxCarouselIndex = this.appointmentDates.length - 1;
+  
+    let targetIndex = this.currentCarouselIndex + direction;
+  
+    // Limit the carousel movement to the first and last item
+    if (targetIndex < 0) {
+      targetIndex = 0;
+    } else if (targetIndex > maxCarouselIndex) {
+      targetIndex = maxCarouselIndex;
+    }
+  
+    this.currentCarouselIndex = targetIndex;
+  
+    const translateX = -carouselWidth * this.currentCarouselIndex;
+    carousel.style.transform = `translateX(${translateX}px)`;
+  }
+
+  isDisabled(dayName: string): boolean {
+    return dayName === 'Sun' || dayName === 'Sat';
   }
 }
