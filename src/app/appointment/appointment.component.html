@@ -19,10 +19,12 @@
     </div>
 
     <div class="days-container">
-      <div class="date">
-        <h3>Jun</h3>
-        <h1>30</h1>
-        <h4>Today</h4>
+      <div class="carousel">
+        <button class="date" *ngFor="let date of appointmentDates">
+          <h3>{{ date.month }}</h3>
+          <h1>{{ date.day }}</h1>
+          <h4>{{ date.dayName }}</h4>
+        </button>
       </div>
     </div>
 
@@ -33,16 +35,16 @@
     <div class="timeslot">
       <h3>Afternoon</h3>
       <div class="slots">
-        <div class="time">
+        <button class="time">
           <h3>1:00 PM</h3>
-        </div>
+        </button>
       </div>
 
       <h3>Evening</h3>
       <div class="slots">
-        <div class="time">
+        <button class="time">
           <h3>6:00 PM</h3>
-        </div>
+        </button>
       </div>
     </div>
 
