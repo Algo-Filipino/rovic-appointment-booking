@@ -11,10 +11,9 @@
   
 </div>
 
-<ng-container *ngIf="!showServicesType; else servicesType">
-  <app-services-list (showServicesType)="showServicesType = $event"></app-services-list>
-</ng-container>
+<router-outlet></router-outlet>
 
-<ng-template #servicesType>
-  <app-services-type></app-services-type>
-</ng-template>
+<div class="footer">
+  <img src="../assets/images/kyoo-logo.png" alt="Kyoo Logo" class="kyoo-img">
+  <h4 class="footer-description">© 2021 Kyoo. All rights reserved.</h4>
+</div>

@@ -14,8 +14,19 @@
 
 /********** BACK ICON CONTAINER **************/
 
-.back-icon {
+.back-icon a {
+    text-decoration: none;
+    color: #191444;
     display: flex;
+}
+
+.back-icon a:hover {
+    text-decoration: none;
+    color: #FE7401;
+}
+
+.back-icon a:hover img {
+    filter: invert(66%) sepia(77%) saturate(5000%) hue-rotate(359deg) brightness(101%) contrast(106%);
 }
 
 /********** CONTENT TITLE CONTAINER **************/

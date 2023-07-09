@@ -6,15 +6,17 @@
       </div>
   
       <div class="appointment-container">
-        <button class="appointment-button" id="pet-checkup" type="button" (click)="onBathGroomingClick()">
-          <div class="button-text">
-            <h2 class="appointment-title">Pet Check-up</h2>
-            <h3 class="appointment-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada vitae vitae sem tortor.</h3>
-          </div>
-          <div class="button-icon">
-            <img src="../assets/images/next.svg" alt="Next" />
-          </div>
-        </button>
+        <a routerLink="/services-type">
+          <button class="appointment-button" id="pet-checkup" type="button">
+            <div class="button-text">
+              <h2 class="appointment-title">Pet Check-up</h2>
+              <h3 class="appointment-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada vitae vitae sem tortor.</h3>
+            </div>
+            <div class="button-icon">
+              <img src="../assets/images/next.svg" alt="Next" />
+            </div>
+          </button>
+        </a>
       </div>
   
       <div class="appointment-container">

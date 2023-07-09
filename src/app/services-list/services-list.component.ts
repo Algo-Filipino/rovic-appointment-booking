@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-services-list',
@@ -6,9 +6,4 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./services-list.component.css']
 })
 export class ServicesListComponent {
-  @Output() showServicesType = new EventEmitter<boolean>();
-
-  onBathGroomingClick() {
-    this.showServicesType.emit(true);
-  }
 }

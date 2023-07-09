@@ -2,8 +2,10 @@
   <div class="container">
 
     <div class="back-icon">
-      <img src="../../assets/images/back-arrow.svg" alt="back" />
-      <h3 class="back-title">Back</h3>
+      <a routerLink="/services-type">
+        <img src="../../assets/images/back-arrow.svg" alt="back" />
+        <h3 class="back-title">Back</h3>
+      </a>
     </div>
 
     <div class="content-title">
@@ -49,8 +51,20 @@
     </div>
 
     <div class="submit-button">
-      <button type="submit" class="proceed-btn">Proceed</button>
+      <a routerLink="/info-form">
+        <button type="submit" class="proceed-btn">Proceed</button>
+      </a>
     </div>
 
   </div>
 </div>
+
+<ul *ngFor="let appointment of appointments">
+  <li>
+    <ul>
+      <li *ngFor="let timeslot of appointment.operatingDays[1].timeslot">
+        {{ timeslot.time }}
+      </li>
+    </ul>
+  </li>
+</ul>

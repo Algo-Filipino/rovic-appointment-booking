@@ -14,8 +14,19 @@
 
 /********** BACK ICON CONTAINER **************/
 
-.back-icon {
+.back-icon a {
+    text-decoration: none;
+    color: #191444;
     display: flex;
+}
+
+.back-icon a:hover {
+    text-decoration: none;
+    color: #FE7401;
+}
+
+.back-icon a:hover img {
+    filter: invert(66%) sepia(77%) saturate(5000%) hue-rotate(359deg) brightness(101%) contrast(106%);
 }
 
 /********** CONTENT TITLE CONTAINER **************/
@@ -197,7 +208,7 @@
     margin-top: 2rem;
 }
 
-.proceed-btn {
+.submit-button a {
     width: 97.5%;
     height: 4rem;
     border: none;
@@ -208,6 +219,17 @@
     font-size: 24px;
 }
 
-.proceed-btn:hover {
+.submit-button a .proceed-btn {
+    width: 97.5%;
+    height: 4rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #FE7401;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.submit-button a .proceed-btn:hover {
     background-color: #e66e0c;
 }

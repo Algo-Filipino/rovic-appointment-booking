@@ -1,8 +1,10 @@
 <div class="content">
     <div class="container">
         <div class="back-icon">
-            <img src="../../assets/images/back-arrow.svg" alt="back" />
-            <h3 class="back-title">Back</h3>
+            <a routerLink="/appointment">
+                <img src="../../assets/images/back-arrow.svg" alt="back" />
+                <h3 class="back-title">Back</h3>
+            </a>
         </div>
 
         <div class="content-title">
@@ -26,7 +28,11 @@
             <input type="text" name="mobile" placeholder="Mobile Number" class="info-details" required />
             <input type="text" name="email" placeholder="Email (Optional)" class="info-details" />
             <textarea class="info-textarea" name="comments" rows="4" cols="50" placeholder="Comments / Remarks (Optional)"></textarea>
-            <button type="submit" class="proceed-btn">Proceed</button>
+            <div class="submit-button">
+                <a routerLink="/summary">
+                  <button type="submit" class="proceed-btn">Proceed</button>
+                </a>
+            </div>
         </form>
     </div>
 </div>

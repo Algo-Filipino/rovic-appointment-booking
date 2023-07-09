@@ -11,6 +11,17 @@ import { SummaryComponent } from './summary/summary.component';
 import { ReceiptComponent } from './receipt/receipt.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', component: ServicesListComponent },
+  { path: 'services-type', component: ServicesTypeComponent },
+  { path: 'appointment', component: AppointmentComponent },
+  { path: 'info-form', component: InfoFormComponent },
+  { path: 'summary', component: SummaryComponent },
+  { path: 'receipt', component: ReceiptComponent },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
   providers: [],
