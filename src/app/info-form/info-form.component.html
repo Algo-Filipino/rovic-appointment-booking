@@ -24,15 +24,13 @@
 
         <h3 class="caption">ENTER PERSONAL DETAILS</h3>
         <form class="info-form">
-            <input type="text" name="name" placeholder="Name" class="info-details" required />
-            <input type="text" name="mobile" placeholder="Mobile Number" class="info-details" required />
-            <input type="text" name="email" placeholder="Email (Optional)" class="info-details" />
-            <textarea class="info-textarea" name="comments" rows="4" cols="50" placeholder="Comments / Remarks (Optional)"></textarea>
+            <input [(ngModel)]="name" type="text" name="name" placeholder="Name" class="info-details" required />
+            <input [(ngModel)]="mobile" type="text" name="mobile" placeholder="Mobile Number" class="info-details" required />
+            <input [(ngModel)]="email" type="text" name="email" placeholder="Email (Optional)" class="info-details" />
+            <textarea [(ngModel)]="remarks" class="info-textarea" name="comments" rows="4" cols="50" placeholder="Comments / Remarks (Optional)"></textarea>
             <div class="submit-button">
-                <a routerLink="/summary">
-                  <button type="submit" class="proceed-btn">Proceed</button>
-                </a>
+              <button [disabled]="!isFormValid()" (click)="proceedToSummary()" type="button" class="proceed-btn">Proceed</button>
             </div>
-        </form>
+          </form>
     </div>
 </div>
