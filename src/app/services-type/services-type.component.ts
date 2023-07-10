@@ -6,7 +6,7 @@ import { ServicesTypeService } from './services-type.service';
   templateUrl: './services-type.component.html',
   styleUrls: ['./services-type.component.css']
 })
-export class ServicesTypeComponent {
+export class ServicesTypeComponent implements OnInit {
   appointments: any[] = [];
 
   constructor(private appointmentService: ServicesTypeService) { }

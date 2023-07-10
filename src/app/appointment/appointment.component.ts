@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from './appointment.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-appointment',
@@ -7,6 +8,10 @@ import { AppointmentService } from './appointment.service';
   styleUrls: ['./appointment.component.css']
 })
 export class AppointmentComponent implements OnInit {
+  appointmentName: string = '';
+  appointmentDescription: string = '';
+
+  appointmentTimeslots: any[] = [];
   appointments: any[] = [];
   appointmentDates: any[] = [];
 
@@ -14,15 +19,49 @@ export class AppointmentComponent implements OnInit {
 
   currentCarouselIndex = 0;
 
-  constructor(private appointmentService: AppointmentService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private appointmentService: AppointmentService
+    ) { }
 
   ngOnInit() {
     this.appointmentService.getAppointments()
       .subscribe((data: any[]) => {
         this.appointments = data;
+    });
+
+    this.route.params.subscribe(params => {
+      this.appointmentName = params['name'];
+      this.appointmentDescription = params['description'];
+
+      this.appointmentService.getAppointments()
+        .subscribe((data: any[]) => {
+          const appointment = data.find(appt => appt.name === this.appointmentName);
+          if (appointment) {
+            this.appointmentTimeslots = appointment.operatingDays[0][1].timeslot;
+          } else {
+            this.appointmentTimeslots = [];
+          }
       });
+    });
 
     this.populateAppointmentDates();
+  }
+
+  formatTime(time: string): string {
+    const parts = time.split(':');
+    let hour = parseInt(parts[0]);
+    const minute = parseInt(parts[1]);
+
+    let period = 'AM';
+    if (hour >= 12) {
+      period = 'PM';
+      if (hour > 12) {
+        hour -= 12;
+      }
+    }
+
+    return hour + ':' + (minute < 10 ? '0' + minute : minute) + ' ' + period;
   }
 
   populateAppointmentDates() {
@@ -88,8 +127,25 @@ export class AppointmentComponent implements OnInit {
     this.appointmentDates.forEach((d) => {
       d.isActive = false;
     });
-
+  
     date.isActive = true;
     this.selectedDate = `${date.month} ${date.day}, ${new Date().getFullYear()}`;
+  
+    this.fetchTimeslots();
+  }
+
+  fetchTimeslots() {
+    this.appointmentService.getAppointments()
+      .subscribe((data: any[]) => {
+        const appointment = data.find(appt => appt.name === this.appointmentName);
+        if (appointment) {
+          const operatingDays = appointment.operatingDays;
+          const dayOfWeek = new Date(this.selectedDate).getDay();
+          const timeslots = operatingDays[dayOfWeek][1].timeslot;
+          this.appointmentTimeslots = timeslots;
+        } else {
+          this.appointmentTimeslots = [];
+        }
+      });
   }
 }

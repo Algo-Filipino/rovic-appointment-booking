@@ -9,8 +9,8 @@
     </div>
 
     <div class="content-title">
-      <h3 class="description-title">OPD</h3>
-      <h1 class="main-title">OPD</h1>
+      <h3 class="description-title">{{ appointmentDescription }}</h3>
+      <h1 class="main-title">{{ appointmentName }}</h1>
     </div>
 
     <div class="select-date">
@@ -44,8 +44,8 @@
 
     <div class="timeslot">
       <div class="slots">
-        <button class="time">
-          <h3>1:00 PM</h3>
+        <button class="time" *ngFor="let timeslot of appointmentTimeslots">
+          <h3>{{ formatTime(timeslot.time) }}</h3>
         </button>
       </div>
     </div>
