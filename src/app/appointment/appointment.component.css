@@ -174,10 +174,6 @@
 
 /********** TIMESLOT CONTAINER **************/
 
-.timeslot h3 {
-    color: #191444;
-}
-
 .slots {
     display: flex;
 }
@@ -199,6 +195,10 @@
     color: white;
 }
 
+.time.active {
+    background-color: #191444;
+    color: white;
+  }
 /********** PROCEED BUTTON CONTAINER **************/
 
 .submit-button {

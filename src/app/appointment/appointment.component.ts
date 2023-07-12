@@ -19,6 +19,8 @@ export class AppointmentComponent implements OnInit {
 
   currentCarouselIndex = 0;
 
+  selectedTimeslot: string = '';
+
   constructor(
     private route: ActivatedRoute,
     private appointmentService: AppointmentService
@@ -48,20 +50,10 @@ export class AppointmentComponent implements OnInit {
     this.populateAppointmentDates();
   }
 
-  formatTime(time: string): string {
-    const parts = time.split(':');
-    let hour = parseInt(parts[0]);
-    const minute = parseInt(parts[1]);
-
-    let period = 'AM';
-    if (hour >= 12) {
-      period = 'PM';
-      if (hour > 12) {
-        hour -= 12;
-      }
-    }
-
-    return hour + ':' + (minute < 10 ? '0' + minute : minute) + ' ' + period;
+  selectTimeslot(timeslot: string) {
+    this.selectedTimeslot = timeslot;
+  
+    console.log('Selected Timeslot:', this.selectedTimeslot);
   }
 
   populateAppointmentDates() {
@@ -131,21 +123,24 @@ export class AppointmentComponent implements OnInit {
     date.isActive = true;
     this.selectedDate = `${date.month} ${date.day}, ${new Date().getFullYear()}`;
   
+    const dayOfWeek = new Date(this.selectedDate).getDay();
+    console.log('Selected Date:', this.selectedDate);
+    console.log('Day of Week:', dayOfWeek);
+  
     this.fetchTimeslots();
   }
 
   fetchTimeslots() {
-    this.appointmentService.getAppointments()
-      .subscribe((data: any[]) => {
-        const appointment = data.find(appt => appt.name === this.appointmentName);
-        if (appointment) {
-          const operatingDays = appointment.operatingDays;
-          const dayOfWeek = new Date(this.selectedDate).getDay();
-          const timeslots = operatingDays[dayOfWeek][1].timeslot;
-          this.appointmentTimeslots = timeslots;
-        } else {
-          this.appointmentTimeslots = [];
-        }
-      });
+    this.appointmentService.getAppointments().subscribe((data: any[]) => {
+      const appointment = data.find(appt => appt.name === this.appointmentName);
+      if (appointment) {
+        const operatingDays = appointment.operatingDays;
+        const dayOfWeek = new Date(this.selectedDate).getDay();
+        const timeslots = operatingDays[dayOfWeek].timeslot.map((slot: any) => slot.time);
+        this.appointmentTimeslots = timeslots;
+      } else {
+        this.appointmentTimeslots = [];
+      }
+    });
   }
 }

@@ -44,27 +44,17 @@
 
     <div class="timeslot">
       <div class="slots">
-        <button class="time" *ngFor="let timeslot of appointmentTimeslots">
-          <h3>{{ formatTime(timeslot.time) }}</h3>
+        <button class="time" *ngFor="let timeslot of appointmentTimeslots" (click)="selectTimeslot(timeslot)" [ngClass]="{'active': selectedTimeslot === timeslot}">
+          <h3>{{ timeslot }}</h3>
         </button>
       </div>
     </div>
 
     <div class="submit-button">
       <a routerLink="/info-form">
-        <button type="submit" class="proceed-btn">Proceed</button>
+        <button type="submit" class="proceed-btn" [disabled]="!selectedDate || !selectedTimeslot">Proceed</button>
       </a>
     </div>
 
   </div>
 </div>
-
-<ul *ngFor="let appointment of appointments">
-  <li>
-    <ul>
-      <li *ngFor="let timeslot of appointment.operatingDays[1].timeslot">
-        {{ timeslot.time }}
-      </li>
-    </ul>
-  </li>
-</ul>
