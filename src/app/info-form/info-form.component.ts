@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-info-form',
@@ -11,11 +11,25 @@ export class InfoFormComponent {
   mobile = '';
   email = '';
   remarks = '';
+  selectedTimeslot = '';
+  selectedDate = '';
+  appointmentName = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.appointmentName = params['appointmentName'];
+      this.selectedDate = params['selectedDate'];
+      this.selectedTimeslot = params['selectedTimeslot'];
+    });
+  }
 
   proceedToSummary() {
     const queryParams = {
+      appointmentName: this.appointmentName,
+      selectedDate: this.selectedDate,
+      selectedTimeslot: this.selectedTimeslot,
       name: this.name,
       mobile: this.mobile,
       email: this.email,

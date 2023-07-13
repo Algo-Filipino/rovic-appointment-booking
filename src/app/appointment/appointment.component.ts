@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from './appointment.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-appointment',
@@ -23,6 +23,7 @@ export class AppointmentComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private appointmentService: AppointmentService
     ) { }
 
@@ -142,5 +143,15 @@ export class AppointmentComponent implements OnInit {
         this.appointmentTimeslots = [];
       }
     });
+  }
+
+  proceedToInfoForm() {
+    const queryParams = {
+      appointmentName: this.appointmentName,
+      selectedDate: this.selectedDate,
+      selectedTimeslot: this.selectedTimeslot
+    };
+  
+    this.router.navigate(['/info-form'], { queryParams });
   }
 }

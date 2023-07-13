@@ -51,10 +51,7 @@
     </div>
 
     <div class="submit-button">
-      <a routerLink="/info-form">
-        <button type="submit" class="proceed-btn" [disabled]="!selectedDate || !selectedTimeslot">Proceed</button>
-      </a>
+        <button (click)="proceedToInfoForm()" type="submit" class="proceed-btn" [disabled]="!selectedDate || !selectedTimeslot">Proceed</button>
     </div>
-
   </div>
 </div>

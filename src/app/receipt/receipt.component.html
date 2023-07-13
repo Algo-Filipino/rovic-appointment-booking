@@ -18,7 +18,7 @@
         <div class="reference">
             <div class="left">
                 <h3 class="reference-title">Reference Number</h3>
-                <h1 class="reference-number">BNX0031892</h1>
+                <h1 class="reference-number">{{ referenceNumber }}</h1>
             </div>
             <div class="right">
                 <h3 class="reference-title">Appointment Status</h3>
@@ -30,12 +30,12 @@
 
         <div class="selected-service">
             <h3 class="title">Selected Service</h3>
-            <h1 class="service">Pet Check-up - OPD</h1>
+            <h1 class="service">Pet Check-up - {{ appointmentName }}</h1>
         </div>
-
+          
         <div class="selected-date">
             <h3 class="title">Selected Date & Time</h3>
-            <h1 class="service">July 12, 2023 - 1:00 PM</h1>
+            <h1 class="service">{{ selectedDate }} - {{ selectedTimeslot }}</h1>
         </div>
 
         <hr class="dashed" />
