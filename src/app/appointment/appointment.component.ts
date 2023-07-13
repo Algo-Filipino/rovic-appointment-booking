@@ -111,10 +111,6 @@ export class AppointmentComponent implements OnInit {
     carousel.style.transform = `translateX(${translateX}px)`;
   }
 
-  isDisabled(dayName: string): boolean {
-    return dayName === 'Sunday' || dayName === 'Saturday';
-  }
-
   selectDate(date: any) {
     this.appointmentDates.forEach((d) => {
       d.isActive = false;
@@ -136,7 +132,11 @@ export class AppointmentComponent implements OnInit {
       if (appointment) {
         const operatingDays = appointment.operatingDays;
         const dayOfWeek = new Date(this.selectedDate).getDay();
-        const timeslots = operatingDays[dayOfWeek].timeslot.map((slot: any) => slot.time);
+        const timeslots = operatingDays[dayOfWeek].timeslot.map((slot: any) => {
+          const time = new Date(slot.time);
+          const formattedTime = time.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+          return formattedTime;
+        });
         this.appointmentTimeslots = timeslots;
       } else {
         this.appointmentTimeslots = [];

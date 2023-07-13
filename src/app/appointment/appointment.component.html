@@ -25,7 +25,7 @@
 
       <div class="carousel">
         <div class="days-container">
-          <button class="date" [disabled]="isDisabled(date.dayName)" [class.active]="date.isActive" (click)="selectDate(date)" *ngFor="let date of appointmentDates">
+          <button class="date" [class.active]="date.isActive" (click)="selectDate(date)" *ngFor="let date of appointmentDates">
             <h3>{{ date.month }}</h3>
             <h1>{{ date.day }}</h1>
             <h4>{{ date.dayName }}</h4>
