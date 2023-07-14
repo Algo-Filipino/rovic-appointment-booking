@@ -126,15 +126,16 @@
 
 /********** PROCEED BUTTON CONTAINER **************/
 
-.info-form .submit-button {
+.submit-button {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
 }
 
-.info-form .submit-button a {
-    width: 97.5%;
+.submit-button .proceed-btn {
+    width: 100%;
     height: 4rem;
     border: none;
     border-radius: 8px;
@@ -144,17 +145,17 @@
     font-size: 24px;
 }
 
-.info-form .submit-button a .proceed-btn {
-    width: 97.5%;
-    height: 4rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #FE7401;
-    color: #fff;
-    font-weight: 700;
-    font-size: 24px;
-}
-
-.info-form .submit-button a .proceed-btn:hover {
+.submit-button .proceed-btn:hover {
     background-color: #e66e0c;
 }
+
+.submit-button .proceed-btn[disabled] {
+    background-color: #F3F6FC;
+    color: #A3A1B5;
+  }
+  
+  .submit-button .proceed-btn[disabled]:hover {
+    background-color: #F3F6FC;
+    color: #A3A1B5;
+    cursor: not-allowed;
+  }

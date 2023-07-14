@@ -29,7 +29,9 @@
             <input [(ngModel)]="email" type="text" name="email" placeholder="Email (Optional)" class="info-details" />
             <textarea [(ngModel)]="remarks" class="info-textarea" name="comments" rows="4" cols="50" placeholder="Comments / Remarks (Optional)"></textarea>
             <div class="submit-button">
-                <button [disabled]="!isFormValid()" (click)="proceedToSummary()" type="button" class="proceed-btn">Proceed</button>
+                <button [disabled]="!isFormValid()" (click)="proceedToSummary()" type="button" class="proceed-btn">
+                    {{ !isFormValid() ? 'Fill out the fields above to proceed' : 'Proceed' }}
+                </button>
             </div>
           </form>
     </div>

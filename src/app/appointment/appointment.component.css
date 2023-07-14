@@ -208,7 +208,7 @@
     margin-top: 2rem;
 }
 
-.submit-button a {
+.submit-button .proceed-btn {
     width: 97.5%;
     height: 4rem;
     border: none;
@@ -219,17 +219,17 @@
     font-size: 24px;
 }
 
-.submit-button a .proceed-btn {
-    width: 97.5%;
-    height: 4rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #FE7401;
-    color: #fff;
-    font-weight: 700;
-    font-size: 24px;
-}
-
-.submit-button a .proceed-btn:hover {
+.submit-button .proceed-btn:hover {
     background-color: #e66e0c;
 }
+
+.submit-button .proceed-btn[disabled] {
+    background-color: #F3F6FC;
+    color: #A3A1B5;
+  }
+  
+  .submit-button .proceed-btn[disabled]:hover {
+    background-color: #F3F6FC;
+    color: #A3A1B5;
+    cursor: not-allowed;
+  }

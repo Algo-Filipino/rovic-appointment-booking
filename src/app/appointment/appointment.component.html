@@ -51,7 +51,9 @@
     </div>
 
     <div class="submit-button">
-        <button (click)="proceedToInfoForm()" type="submit" class="proceed-btn" [disabled]="!selectedDate || !selectedTimeslot">Proceed</button>
+        <button (click)="proceedToInfoForm()" type="submit" class="proceed-btn" [disabled]="!selectedDate || !selectedTimeslot">
+          {{ !selectedDate || !selectedTimeslot ? 'Select date and time to proceed' : 'Proceed' }}
+        </button>
     </div>
   </div>
 </div>
