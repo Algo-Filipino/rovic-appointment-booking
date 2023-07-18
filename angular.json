@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rovic-appointment-booking": {
+    "appointment-booking-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/rovic-appointment-booking",
+            "outputPath": "dist/appointment-booking-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "rovic-appointment-booking:build:production"
+              "browserTarget": "appointment-booking-app:build:production"
             },
             "development": {
-              "browserTarget": "rovic-appointment-booking:build:development"
+              "browserTarget": "appointment-booking-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rovic-appointment-booking:build"
+            "browserTarget": "appointment-booking-app:build"
           }
         },
         "test": {

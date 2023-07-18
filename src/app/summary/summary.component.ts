@@ -27,7 +27,7 @@ export class SummaryComponent implements OnInit {
       this.name = params['name'];
       this.mobile = params['mobile'];
       this.email = params['email'];
-      this.remarks = params['remarks'];
+      this.remarks = params['remarks'] || undefined;
     });
   }
 

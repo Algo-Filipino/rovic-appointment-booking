@@ -161,6 +161,7 @@
     color: #fff;
     font-weight: 700;
     font-size: 24px;
+    cursor: pointer;
 }
 
 .proceed-btn:hover {

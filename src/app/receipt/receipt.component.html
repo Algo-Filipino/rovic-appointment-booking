@@ -51,10 +51,10 @@
         <h3 class="container-title">Email</h3>
         <h1 class="container-value">{{ email }}</h1>
 
-        <hr class="dashed" />
+        <hr class="dashed" *ngIf="remarks"/>
 
-        <h3 class="container-title">Remarks</h3>
-        <h1 class="container-value">{{ remarks }}</h1>
+        <h3 class="container-title" *ngIf="remarks">Remarks</h3>
+        <h1 class="container-value" *ngIf="remarks">{{ remarks }}</h1>
     </div>
 </div>
 
